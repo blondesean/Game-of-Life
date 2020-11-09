@@ -1,0 +1,13 @@
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\bin\Debug\netcoreapp3.1\Conways_Game_of_Life.exe
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\bin\Debug\netcoreapp3.1\Conways_Game_of_Life.deps.json
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\bin\Debug\netcoreapp3.1\Conways_Game_of_Life.runtimeconfig.json
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\bin\Debug\netcoreapp3.1\Conways_Game_of_Life.runtimeconfig.dev.json
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\bin\Debug\netcoreapp3.1\Conways_Game_of_Life.dll
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\bin\Debug\netcoreapp3.1\Conways_Game_of_Life.pdb
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\obj\Debug\netcoreapp3.1\Conways_Game_of_Life.csprojAssemblyReference.cache
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\obj\Debug\netcoreapp3.1\Conways_Game_of_Life.AssemblyInfoInputs.cache
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\obj\Debug\netcoreapp3.1\Conways_Game_of_Life.AssemblyInfo.cs
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\obj\Debug\netcoreapp3.1\Conways_Game_of_Life.csproj.CoreCompileInputs.cache
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\obj\Debug\netcoreapp3.1\Conways_Game_of_Life.dll
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\obj\Debug\netcoreapp3.1\Conways_Game_of_Life.pdb
+C:\Users\Sean\Desktop\Programming\Csharp\Game of Life\Game-of-Life\Conways_Game_of_Life\Conways_Game_of_Life\obj\Debug\netcoreapp3.1\Conways_Game_of_Life.genruntimeconfig.cache
