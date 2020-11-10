@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Conways_Game_of_Life
@@ -8,11 +9,24 @@ namespace Conways_Game_of_Life
     {
         public bool isAlive;
 
-        
+
         //Constructor is alive or not
         public Square(bool aliveStatus)
         {
             isAlive = aliveStatus;
+        }
+
+        //Print if alive or not
+        public string AliveStatus()
+        {
+            if(isAlive)
+            {
+                return "alive";
+            }
+            else
+            {
+                return "dead";
+            }
         }
 
         //Use for print loop if alive, prints either X or nothing
@@ -29,7 +43,7 @@ namespace Conways_Game_of_Life
             }
 
         //Check to see if cell will be alive next round
-        public bool livesOn(bool neighbor1, bool neighbor2, bool neighbor3, bool neighbor4, bool neighbor5, bool neighbor6, bool neighbor7, bool neighbor8)
+        public bool livesOn(bool neighbor1, bool neighbor2, bool neighbor3, bool neighbor4, bool neighbor5, bool neighbor6, bool neighbor7, bool neighbor8, bool debugIt = false)
         {
             int aliveNeighbors = 0;
            
@@ -42,6 +56,11 @@ namespace Conways_Game_of_Life
             if (neighbor6) { aliveNeighbors++; }
             if (neighbor7) { aliveNeighbors++; }
             if (neighbor8) { aliveNeighbors++; }
+
+            if (debugIt)
+            {
+                Console.WriteLine("There are " + aliveNeighbors + ".");
+            }
 
             if (isAlive)
             {

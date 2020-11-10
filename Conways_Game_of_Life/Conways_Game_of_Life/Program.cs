@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace Conways_Game_of_Life
 {
@@ -10,35 +11,42 @@ namespace Conways_Game_of_Life
             bool alive = true;
             bool dead = false;
 
-            int sizeX = 6;
-            int sizeY = 6;
+            int sizeX = 10; //change array sizes below as well in futureGrid and grid
+            int sizeY = 10;
 
             //present state
-            Square[,] grid = new Square[6, 6]
-            { 
-                {new Square(dead),new Square(dead),new Square(dead),new Square(dead),new Square(dead),new Square(dead) },
-                {new Square(dead),new Square(dead),new Square(alive),new Square(dead),new Square(dead),new Square(dead) },
-                {new Square(dead),new Square(dead),new Square(alive),new Square(dead),new Square(dead),new Square(dead) },
-                {new Square(dead),new Square(dead),new Square(alive),new Square(dead),new Square(dead),new Square(dead) },
-                {new Square(dead),new Square(dead),new Square(dead),new Square(dead),new Square(dead),new Square(dead) },
-                {new Square(dead),new Square(dead),new Square(dead),new Square(dead),new Square(dead),new Square(dead) }
-            };
+            Square[,] grid = new Square[10, 10];
 
             //future state
-            Square[,] futureGrid = new Square[5, 5];
-
-            futureGrid = grid;
-
-            //testing output
-            //grid[0, 0].PrintCurrentGen();
-            //Console.WriteLine("\n" + grid[0,0].livesOn(alive, alive, alive, alive));
-            //Console.WriteLine(grid[0, 0].livesOn(alive, alive, alive, dead));
-            //Console.WriteLine(grid[0, 0].livesOn(alive, alive, dead, dead));
-            //Console.WriteLine(grid[0, 0].livesOn(alive, dead, dead, dead));
+            bool[,] futureGrid = new bool[10, 10] 
+            { 
+                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
+                { dead, alive, alive, dead, dead, dead, dead, dead, dead, dead },
+                { dead, alive, dead, dead, dead, dead, dead, dead, dead, dead },
+                { dead, dead, dead, dead, alive, dead, dead, dead, dead, dead },
+                { dead, dead, dead, alive, alive, dead, dead, dead, dead, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, alive, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, alive, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, alive, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
+            };
 
             //Loop through 1a) display rows 1b) display colums 2) update the grid, check neighbors live status, 3) make old grid new grid and do it again, with pause
-            for (int k = 0; k < 5; k++)
+            for (int k = 0; k < 500; k++)
             {
+                //set grid values, from previous (or first) gen
+                for (int i = 0; i < sizeY; i++)
+                {
+                    for (int j = 0; j < sizeX; j++)
+                    {
+                        grid[i, j] = new Square(futureGrid[i, j]);
+                    }
+                }
+
+                //clear the screen for next iteration
+                Console.Clear();
+
                 //Loop through and print status
                 for (int i = 0; i < sizeY; i++)
                 {
@@ -51,57 +59,83 @@ namespace Conways_Game_of_Life
                     Console.Write("\n");
                 }
 
+                //Draw line to see iterations
+                PrintLine("--------------------------------------------------", false);
+
                 bool neighborN; bool neighborS; bool neighborE; bool neighborW;
                 bool neighborNE; bool neighborNW; bool neighborSE; bool neighborSW;
 
                 //Update for next round
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < sizeY; i++)
                 {
-                    for (int j = 0; j < 5; j++)
+                    for (int j = 0; j < sizeX; j++)
                     {
-                        //get values for neighbors
-                        neighborN = neighborStatus(grid, i - 1, j);
-                        neighborS = neighborStatus(grid, i + 1, j);
-                        neighborE = neighborStatus(grid, i, j + 1);
-                        neighborW = neighborStatus(grid, i, j - 1);
-                        neighborNE = neighborStatus(grid, i - 1, j + 1);
-                        neighborNW = neighborStatus(grid, i - 1, j - 1);
-                        neighborSE = neighborStatus(grid, i + 1, j + 1);
-                        neighborSW = neighborStatus(grid, i + 1, j - 1);
+                        //Tracking for debugging
+                        PrintLine("--------------------------------------------------", false);
+                        Print("Checking square at (" + i + "," + j + ") and it is " + grid[i, j].AliveStatus() + ":" + neighborStatus(grid, i, j, "0") + "\n", false);
 
-                        Console.Write("cell at (" + i + "," + j + ") N:" + neighborN + " S:" + neighborS + " E:" + neighborE + " W:" + neighborW + " NE:" + neighborNE + " NW:" + neighborNW + " SE:" + neighborSE + " SW:" + neighborSW + "\n");
-                        //set new alive status
-                        futureGrid[i, j].isAlive = grid[i, j].livesOn(neighborN, neighborS, neighborE, neighborW, neighborNE, neighborNW, neighborSE, neighborSW);
-                        //Console.WriteLine("Square at " + i + "," + j + " is " + grid[i, j].isAlive);
+                        //get values for neighbors
+                        neighborN = neighborStatus(grid, i - 1, j, "N");
+                        neighborS = neighborStatus(grid, i + 1, j, "S");
+                        neighborE = neighborStatus(grid, i, j + 1, "E");
+                        neighborW = neighborStatus(grid, i, j - 1, "W");
+                        neighborNE = neighborStatus(grid, i - 1, j + 1, "NE");
+                        neighborNW = neighborStatus(grid, i - 1, j - 1, "NW");
+                        neighborSE = neighborStatus(grid, i + 1, j + 1, "SE");
+                        neighborSW = neighborStatus(grid, i + 1, j - 1, "SW");
+                        Print("cell at (" + i + "," + j + ") N:" + neighborN + " S:" + neighborS + " E:" + neighborE + " W:" + neighborW + " NE:" + neighborNE + " NW:" + neighborNW + " SE:" + neighborSE + " SW:" + neighborSW + "\n", false);
+
+                        //Store alive status for next iteration
+                        futureGrid[i, j] = grid[i, j].livesOn(neighborN, neighborS, neighborE, neighborW, neighborNE, neighborNW, neighborSE, neighborSW, false);
+                        PrintLine("--------------------------------------------------", false);
                     }
                 }
 
-                //replace the current grid with the future grid
-                grid = futureGrid;
-
                 //Draw line to see iterations
-                Console.WriteLine("----------------------------------------");
+                PrintLine("--------------------------------------------------", false);
 
                 //Wait a couple seconds
-                System.Threading.Thread.Sleep(2000);
+                //System.Threading.Thread.Sleep(1000);
             }
 
-                //Wait for user input to end
-                Console.ReadLine();
+            //Wait for user input to end program
+            Console.ReadLine();
         }
 
         //need this method so when we check with squares not on the map we treat those as dead squares
-        static bool neighborStatus(Square[,] check, int x, int y)
+        static bool neighborStatus(Square[,] check, int x, int y, string pos)
         {
+            bool debugPrint = false;
             try
             {
+                Print("---" + pos + ":Neighbor at (" + x + "," + y + ") is ", debugPrint);
+                Print(check[x, y].isAlive + " - (" + x + "," + y + ")\n", debugPrint);
                 return check[x,y].isAlive;
+                
             }
             catch (IndexOutOfRangeException e)
             {
+                Print("a border - (" + x + ", " + y + ")\n", debugPrint);
                 return false;
             }
 
+        }
+        
+        //debugging printing
+        static void Print(string phrase, bool output)
+        {
+            if (output)
+            {
+                Console.Write(phrase);
+            }
+        }
+
+        static void PrintLine(string phrase, bool output)
+        {
+            if (output)
+            {
+                Console.WriteLine(phrase);
+            }
         }
     }
 }
