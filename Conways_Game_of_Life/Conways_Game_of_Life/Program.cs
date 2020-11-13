@@ -20,14 +20,14 @@ namespace Conways_Game_of_Life
             //future state
             bool[,] futureGrid = new bool[10, 10] 
             { 
-                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
-                { dead, alive, alive, dead, dead, dead, dead, dead, dead, dead },
                 { dead, alive, dead, dead, dead, dead, dead, dead, dead, dead },
-                { dead, dead, dead, dead, alive, dead, dead, dead, dead, dead },
-                { dead, dead, dead, alive, alive, dead, dead, dead, dead, dead },
-                { dead, dead, dead, dead, dead, dead, dead, dead, alive, dead },
-                { dead, dead, dead, dead, dead, dead, dead, dead, alive, dead },
-                { dead, dead, dead, dead, dead, dead, dead, dead, alive, dead },
+                { dead, dead, alive, dead, dead, dead, dead, dead, dead, dead },
+                { alive, alive, alive, dead, dead, dead, dead, dead, dead, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
+                { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
                 { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
                 { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
             };
