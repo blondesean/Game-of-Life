@@ -32,6 +32,8 @@ namespace Conways_Game_of_Life
                 { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
             };
 
+
+
             //Loop through 1a) display rows 1b) display colums 2) update the grid, check neighbors live status, 3) make old grid new grid and do it again, with pause
             for (int k = 0; k < 500; k++)
             {
@@ -113,7 +115,7 @@ namespace Conways_Game_of_Life
                 return check[x,y].isAlive;
                 
             }
-            catch (IndexOutOfRangeException e)
+            catch (IndexOutOfRangeException)
             {
                 Print("a border - (" + x + ", " + y + ")\n", debugPrint);
                 return false;

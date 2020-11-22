@@ -68,19 +68,14 @@ namespace Conways_Game_of_Life
                 {
                     case 0:
                         return false;
-                        break;
                     case 1:
                         return false;
-                        break;
                     case 2:
                         return true;
-                        break;
                     case 3:
                         return true;
-                        break;
                     default:
                         return false;
-                        break;
                 }
             }
             else if (aliveNeighbors == 3)
