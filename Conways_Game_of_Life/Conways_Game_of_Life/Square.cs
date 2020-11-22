@@ -38,7 +38,7 @@ namespace Conways_Game_of_Life
                 }
                 else
                 {
-                    Console.Write(" ");
+                    Console.Write(".");
                 }
             }
 

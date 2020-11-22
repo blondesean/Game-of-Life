@@ -13,6 +13,7 @@ namespace Conways_Game_of_Life
 
             int sizeX = 10; //change array sizes below as well in futureGrid and grid
             int sizeY = 10;
+            int iteration = 1;
 
             //present state
             Square[,] grid = new Square[10, 10];
@@ -32,8 +33,6 @@ namespace Conways_Game_of_Life
                 { dead, dead, dead, dead, dead, dead, dead, dead, dead, dead },
             };
 
-
-
             //Loop through 1a) display rows 1b) display colums 2) update the grid, check neighbors live status, 3) make old grid new grid and do it again, with pause
             for (int k = 0; k < 500; k++)
             {
@@ -48,6 +47,7 @@ namespace Conways_Game_of_Life
 
                 //clear the screen for next iteration
                 Console.Clear();
+                PrintLine("Iteration : " + iteration, true);
 
                 //Loop through and print status
                 for (int i = 0; i < sizeY; i++)
@@ -74,7 +74,7 @@ namespace Conways_Game_of_Life
                     {
                         //Tracking for debugging
                         PrintLine("--------------------------------------------------", false);
-                        Print("Checking square at (" + i + "," + j + ") and it is " + grid[i, j].AliveStatus() + ":" + neighborStatus(grid, i, j, "0") + "\n", false);
+                        //Print("Checking square at (" + i + "," + j + ") and it is " + grid[i, j].AliveStatus() + ":" + neighborStatus(grid, i, j, "0") + "\n", false);
 
                         //get values for neighbors
                         neighborN = neighborStatus(grid, i - 1, j, "N");
@@ -95,6 +95,7 @@ namespace Conways_Game_of_Life
 
                 //Draw line to see iterations
                 PrintLine("--------------------------------------------------", false);
+                iteration++;
 
                 //Wait a couple seconds
                 //System.Threading.Thread.Sleep(1000);
@@ -110,8 +111,8 @@ namespace Conways_Game_of_Life
             bool debugPrint = false;
             try
             {
-                Print("---" + pos + ":Neighbor at (" + x + "," + y + ") is ", debugPrint);
-                Print(check[x, y].isAlive + " - (" + x + "," + y + ")\n", debugPrint);
+                //Print("---" + pos + ":Neighbor at (" + x + "," + y + ") is ", debugPrint);
+                //Print(check[x, y].isAlive + " - (" + x + "," + y + ")\n", debugPrint);
                 return check[x,y].isAlive;
                 
             }
